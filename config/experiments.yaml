@@ -1,0 +1,56 @@
+experiments:
+  - name: Model_Light_Adam
+    num_conv_blocks: 2
+    initial_filters: 32
+    kernel_size: [3, 3]
+    dense_units: 128
+    dropout_rate: 0.2
+    optimizer_type: Adam
+    learning_rate: 0.001
+    epochs: 25
+    patience: 5
+    batch_size: 64
+    k_folds: 3
+    augmentation: False
+
+  - name: Model_Light_Adam_Aug
+    num_conv_blocks: 2
+    initial_filters: 32
+    kernel_size: [3, 3]
+    dense_units: 128
+    dropout_rate: 0.2
+    optimizer_type: Adam
+    learning_rate: 0.001
+    epochs: 50
+    patience: 10
+    batch_size: 64
+    k_folds: 3
+    augmentation: True
+
+  - name: Model_Medium_Adam
+    num_conv_blocks: 3
+    initial_filters: 32
+    kernel_size: [3, 3]
+    dense_units: 256
+    dropout_rate: 0.4
+    optimizer_type: Adam
+    learning_rate: 0.001
+    epochs: 25
+    patience: 5
+    batch_size: 128
+    k_folds: 3
+    augmentation: False
+
+  - name: Model_Medium_Adam_Aug
+    num_conv_blocks: 3
+    initial_filters: 32
+    kernel_size: [3, 3]
+    dense_units: 256
+    dropout_rate: 0.4
+    optimizer_type: Adam
+    learning_rate: 0.001
+    epochs: 50
+    patience: 10
+    batch_size: 128
+    k_folds: 3
+    augmentation: True
