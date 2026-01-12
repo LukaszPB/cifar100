@@ -1,0 +1,138 @@
+{
+    "Model_Light_Adam": {
+        "config": {
+            "name": "Model_Light_Adam",
+            "num_conv_blocks": 2,
+            "initial_filters": 32,
+            "kernel_size": [
+                3,
+                3
+            ],
+            "dense_units": 128,
+            "dropout_rate": 0.2,
+            "optimizer_type": "Adam",
+            "learning_rate": 0.001,
+            "epochs": 25,
+            "patience": 5,
+            "batch_size": 64,
+            "k_folds": 3,
+            "augmentation": false
+        },
+        "metrics": {
+            "mean_accuracy": 0.31863994399706524,
+            "std_accuracy": 0.005038154128956465,
+            "mean_top_5_accuracy": 0.6175800164540609,
+            "std_top_5_accuracy": 0.0008211702907031218,
+            "mean_f1_macro": 0.3140745651714099,
+            "std_f1_macro": 0.0038456087499277912,
+            "mean_precision_macro": 0.3283722328518924,
+            "std_precision_macro": 0.001283969152812407,
+            "mean_recall_macro": 0.31865317557655776,
+            "std_recall_macro": 0.005016414625616694,
+            "mean_epochs_run": 12.666666666666666,
+            "std_epochs_run": 0.9428090415820634
+        }
+    },
+    "Model_Light_Adam_Aug": {
+        "config": {
+            "name": "Model_Light_Adam_Aug",
+            "num_conv_blocks": 2,
+            "initial_filters": 32,
+            "kernel_size": [
+                3,
+                3
+            ],
+            "dense_units": 128,
+            "dropout_rate": 0.2,
+            "optimizer_type": "Adam",
+            "learning_rate": 0.001,
+            "epochs": 100,
+            "patience": 10,
+            "batch_size": 64,
+            "k_folds": 3,
+            "augmentation": true
+        },
+        "metrics": {
+            "mean_accuracy": 0.39284005761146545,
+            "std_accuracy": 0.002535255844457097,
+            "mean_top_5_accuracy": 0.6953201095263163,
+            "std_top_5_accuracy": 0.004646604334629124,
+            "mean_f1_macro": 0.3870770872878484,
+            "std_f1_macro": 0.0024055832768621424,
+            "mean_precision_macro": 0.415401127944409,
+            "std_precision_macro": 0.0025367953790557973,
+            "mean_recall_macro": 0.3928420267897939,
+            "std_recall_macro": 0.002478536531685944,
+            "mean_epochs_run": 72.0,
+            "std_epochs_run": 4.898979485566356
+        }
+    },
+    "Model_Medium_Adam": {
+        "config": {
+            "name": "Model_Medium_Adam",
+            "num_conv_blocks": 3,
+            "initial_filters": 32,
+            "kernel_size": [
+                3,
+                3
+            ],
+            "dense_units": 256,
+            "dropout_rate": 0.4,
+            "optimizer_type": "Adam",
+            "learning_rate": 0.001,
+            "epochs": 25,
+            "patience": 5,
+            "batch_size": 128,
+            "k_folds": 3,
+            "augmentation": false
+        },
+        "metrics": {
+            "mean_accuracy": 0.3904999891916911,
+            "std_accuracy": 0.002015081389064178,
+            "mean_top_5_accuracy": 0.6919000148773193,
+            "std_top_5_accuracy": 0.002147102026879217,
+            "mean_f1_macro": 0.38998314170241993,
+            "std_f1_macro": 0.0029686821852401377,
+            "mean_precision_macro": 0.40535945274983587,
+            "std_precision_macro": 0.004428584520483631,
+            "mean_recall_macro": 0.3905115071062694,
+            "std_recall_macro": 0.0020085544484593682,
+            "mean_epochs_run": 16.0,
+            "std_epochs_run": 2.160246899469287
+        }
+    },
+    "Model_Medium_Adam_Aug": {
+        "config": {
+            "name": "Model_Medium_Adam_Aug",
+            "num_conv_blocks": 3,
+            "initial_filters": 32,
+            "kernel_size": [
+                3,
+                3
+            ],
+            "dense_units": 256,
+            "dropout_rate": 0.4,
+            "optimizer_type": "Adam",
+            "learning_rate": 0.001,
+            "epochs": 100,
+            "patience": 10,
+            "batch_size": 128,
+            "k_folds": 3,
+            "augmentation": true
+        },
+        "metrics": {
+            "mean_accuracy": 0.45741966366767883,
+            "std_accuracy": 0.011735504007000802,
+            "mean_top_5_accuracy": 0.7558598121007284,
+            "std_top_5_accuracy": 0.006488935020089172,
+            "mean_f1_macro": 0.4517403833971451,
+            "std_f1_macro": 0.01170176388315923,
+            "mean_precision_macro": 0.4755917164020697,
+            "std_precision_macro": 0.007640445046895414,
+            "mean_recall_macro": 0.4574233460789265,
+            "std_recall_macro": 0.011768152785908422,
+            "mean_epochs_run": 80.33333333333333,
+            "std_epochs_run": 13.888444437333106
+        }
+    }
+}
