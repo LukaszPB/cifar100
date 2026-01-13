@@ -1,50 +1,33 @@
-import tensorflow as tf
+from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras import layers, models
 
-def create_transfer_cnn(input_shape=(32, 32, 3), num_classes=100, fine_tune_at=None):
-    """
-    Tworzy model do Transfer Learningu na zbiorze CIFAR-100.
-    
-    Args:
-        input_shape: Kształt obrazu wejściowego (domyślnie 32x32x3).
-        num_classes: Liczba klas (100 dla CIFAR-100).
-        fine_tune_at: Indeks warstwy, od której zaczynamy odmrażanie wag (opcjonalnie).
-    """
-    
-    # 1. Warstwa wejściowa
+def create_mobilenet_v2(model_name, input_shape, num_classes):
     inputs = layers.Input(shape=input_shape)
-    
-    # 2. Resizing - Modele pre-trenowane na ImageNet (jak EfficientNet) 
-    # najlepiej działają na większych obrazach niż 32x32.
-    # Skalujemy je np. do 72x72 lub 224x224.
-    x = layers.Resizing(72, 72)(inputs)
-    
-    # 3. Model bazowy (Pre-trained)
-    # Wybieramy EfficientNetB0 bez "topu" (warstw klasyfikacyjnych)
-    base_model = tf.keras.applications.EfficientNetB0(
-        input_tensor=x,
-        include_top=False,
-        weights='imagenet'
-    )
-    
-    # Zamrażamy model bazowy na początek
-    base_model.trainable = False
-    
-    # Opcjonalne: Odmrażanie konkretnych warstw do Fine-tuningu
-    if fine_tune_at is not None:
-        base_model.trainable = True
-        # Zamrażamy wszystkie warstwy PRZED indeksem fine_tune_at
-        for layer in base_model.layers[:fine_tune_at]:
-            layer.trainable = False
+    x = inputs
 
-    # 4. Budowa nowej głowy (Top) modelu
-    x = layers.GlobalAveragePooling2D()(base_model.output)
-    x = layers.BatchNormalization()(x)
-    x = layers.Dropout(0.3)(x)  # Redukcja overfittingu
-    
-    # Warstwa wyjściowa - 100 neuronów z aktywacją Softmax
+    # augmentation layer
+    x = layers.RandomFlip("horizontal")(x)
+    x = layers.RandomRotation(0.1)(x)
+    x = layers.RandomTranslation(0.1, 0.1)(x)
+
+    # up sampling
+    x = layers.UpSampling2D(size=(2, 2))(x)
+
+    # mobilenet_v2
+    base_model = MobileNetV2(
+        weights='imagenet',
+        include_top=False,
+        input_tensor=x,
+        pooling='avg'
+    )
+
+    # weight freezing
+    base_model.trainable = False 
+
+    # fully connected layer
+    x = base_model.output
+    x = layers.Dense(256, activation='relu')(x)
+    x = layers.Dropout(0.4)(x)
     outputs = layers.Dense(num_classes, activation='softmax')(x)
-    
-    model = models.Model(inputs, outputs)
-    
-    return model
+
+    return models.Model(inputs, outputs, name=model_name)

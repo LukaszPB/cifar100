@@ -1,0 +1,24 @@
+{
+    "MobileNetV2_Transfer": {
+        "config": {
+            "name": "MobileNetV2_Transfer",
+            "dense_units": 256,
+            "dropout_rate": 0.4,
+            "optimizer_type": "Adam",
+            "learning_rate": 0.0005,
+            "epochs": 1,
+            "patience": 10,
+            "batch_size": 64,
+            "augmentation": true,
+            "base_model": "MobileNetV2 (frozen)"
+        },
+        "metrics": {
+            "accuracy": 0.2953999936580658,
+            "top_5_accuracy": 0.5917999744415283,
+            "f1_macro": 0.2820788964232467,
+            "precision_macro": 0.3012650742339044,
+            "recall_macro": 0.3013,
+            "epochs_run": 1
+        }
+    }
+}

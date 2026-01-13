@@ -156,9 +156,9 @@ def main():
             "metrics": res
         }
 
-    # 4. Zapisz wyniki (Poprawiony format daty dla Windows)
+    # 4. Zapisz wyniki
     os.makedirs("results", exist_ok=True)
-    ts = datetime.now().strftime("%Y%m%d_%H-%M-%S") # Usunięto dwukropki
+    ts = datetime.now().strftime("%Y%m%d_%H-%M-%S")
     file_name = f"results/basic_cnn_summary_{ts}.json"
     
     with open(file_name, 'w') as f:
