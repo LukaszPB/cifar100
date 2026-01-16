@@ -27,6 +27,9 @@ def create_cnn(
 ):
     model = Sequential(name=model_name)
     model.add(Input(shape=input_shape, name='input_layer'))
+
+    print("!!!!!!!!!!!AAAAAAAAAAAAAAAAAAAAAAA!!!!!!!!!!")
+    print(num_conv_blocks, dropout_rate)
     
     # augmentation layer
     if augmentation:
