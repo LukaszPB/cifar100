@@ -1,0 +1,14 @@
+experiments:
+  - name: Model_Medium_Adam_Aug_final
+    num_conv_blocks: 3
+    initial_filters: 32
+    kernel_size: [3, 3]
+    dense_units: 256
+    dropout_rate: 0.2
+    optimizer_type: Adam
+    learning_rate: 0.001
+    epochs: 100
+    patience: 10
+    batch_size: 128
+    k_folds: 3
+    augmentation: True
